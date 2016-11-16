@@ -1,0 +1,8 @@
+name: remote-devel
+summary: Juju charm for my remote development machine
+maintainer: Leo Arias <yo@elopio.net>
+description: |
+  This charm installs the machine I use to write software.
+tags:
+  - misc
+series: [xenial]
