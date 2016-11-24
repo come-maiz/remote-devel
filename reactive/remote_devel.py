@@ -20,7 +20,10 @@ import subprocess
 
 from charms.reactive import when_not, set_state
 from charmhelpers import fetch
-from charmhelpers.core import host
+from charmhelpers.core import (
+    hookenv,
+    host
+)
 
 
 _USERNAME = 'ubuntu'
@@ -42,7 +45,12 @@ def install_remote_devel():
 def _install_utils():
     fetch.apt_install('emacs-nox')
     fetch.apt_install('byobu')
+    _install_mosh()
+
+
+def _install_mosh():
     fetch.apt_install('mosh')
+    hookenv.open_port('60000-61000', 'UDP')
 
 
 def _install_dotfiles():
