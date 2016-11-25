@@ -35,6 +35,7 @@ _DOTFILES_REPO = 'https://github.com/elopio/dotfiles'
 def install_remote_devel():
     os.makedirs(os.path.join(_HOME, 'workspace'), exist_ok=True)
     _install_utils()
+    _install_snapcraft()
     _install_dotfiles()
     host.chownr(
         _HOME, owner=_USERNAME, group=_USERNAME,
@@ -51,6 +52,11 @@ def _install_utils():
 def _install_mosh():
     fetch.apt_install('mosh')
     hookenv.open_port('60000-61000', 'UDP')
+
+
+def _install_snapcraft():
+    fetch.apt_install('lxd')
+    fetch.apt_install('snapcraft')
 
 
 def _install_dotfiles():
