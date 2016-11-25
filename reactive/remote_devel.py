@@ -35,6 +35,7 @@ _DOTFILES_REPO = 'https://github.com/elopio/dotfiles'
 def install_remote_devel():
     os.makedirs(os.path.join(_HOME, 'workspace'), exist_ok=True)
     _install_utils()
+    _install_source_control()
     _install_projects()
     _install_dotfiles()
     host.chownr(
@@ -54,6 +55,11 @@ def _install_mosh():
     hookenv.open_port('60000-61000', 'UDP')
 
 
+def _install_source_control():
+    fetch.apt_install('git')
+    fetch.apt_install('bzr')
+
+
 def _install_projects():
     _install_snapcraft()
     _install_go()
@@ -70,7 +76,6 @@ def _install_go():
 
 
 def _install_dotfiles():
-    fetch.apt_install('git')
     dotfiles_workspace = os.path.join(_HOME, 'workspace', 'dotfiles')
     subprocess.check_call(['git', 'clone', _DOTFILES_REPO, dotfiles_workspace])
     subprocess.check_call(
