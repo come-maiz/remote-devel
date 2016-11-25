@@ -77,3 +77,7 @@ def _install_dotfiles():
         ['env', 'HOME=' + _HOME,
          os.path.join(dotfiles_workspace, 'install.sh'),
          'devel'])
+    subprocess.check_call(
+        ['git', 'remote', 'set-url', 'origin',
+         'git@github.com:elopio/dotfiles'],
+        cwd=dotfiles_workspace)
