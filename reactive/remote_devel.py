@@ -46,6 +46,8 @@ def install_remote_devel():
 
 def _install_utils():
     fetch.apt_install('emacs-nox')
+    # dictionaries
+    fetch.apt_install('aspell-es')
     fetch.apt_install('byobu')
     _install_mosh()
 
