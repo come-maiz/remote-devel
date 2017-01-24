@@ -74,7 +74,7 @@ def _install_snapcraft():
 
 def _install_go():
     fetch.apt_install('golang-go')
-    os.makedirs(os.path.join(_HOME, 'workspace', 'go'), exists_ok=True)
+    os.makedirs(os.path.join(_HOME, 'workspace', 'go'), exist_ok=True)
 
 
 def _install_dotfiles():
