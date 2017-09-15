@@ -6,3 +6,9 @@ description: |
 tags:
   - misc
 series: [xenial]
+storage:
+  workspace:
+    type: filesystem
+    description: storage space for source code and compilations
+    minimum-size: 100M
+    location: /workspace
